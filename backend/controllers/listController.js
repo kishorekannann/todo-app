@@ -3,9 +3,6 @@ const Todo = require("../models/Todo");
 const generateShareToken = require("../utils/generateShareToken");
 const { verifyToken } = require("../utils/jwt");
 
-// @desc    Create a new Todo List
-// @route   POST /api/lists
-// @access  Private
 const createList = async (req, res) => {
     try {
         const { title, isPublic } = req.body;
@@ -27,9 +24,7 @@ const createList = async (req, res) => {
     }
 };
 
-// @desc    Get all Todo Lists for logged-in user
-// @route   GET /api/lists
-// @access  Private
+
 const getLists = async (req, res) => {
     try {
         const lists = await TodoList.find({ owner: req.user.id }).sort({ createdAt: -1 });
@@ -40,9 +35,7 @@ const getLists = async (req, res) => {
     }
 };
 
-// @desc    Get a specific Todo List (if owner or public)
-// @route   GET /api/lists/:id
-// @access  Public/Private
+
 const getListById = async (req, res) => {
     try {
         const list = await TodoList.findById(req.params.id);
@@ -77,9 +70,7 @@ const getListById = async (req, res) => {
     }
 };
 
-// @desc    Update a Todo List (title, public status)
-// @route   PUT /api/lists/:id
-// @access  Private
+
 const updateList = async (req, res) => {
     try {
         const { title, isPublic } = req.body;
@@ -105,9 +96,7 @@ const updateList = async (req, res) => {
     }
 };
 
-// @desc    Delete a Todo List and its todos
-// @route   DELETE /api/lists/:id
-// @access  Private
+
 const deleteList = async (req, res) => {
     try {
         const list = await TodoList.findById(req.params.id);
@@ -133,9 +122,7 @@ const deleteList = async (req, res) => {
     }
 };
 
-// @desc    Generate share token for a Todo List
-// @route   POST /api/lists/:id/share
-// @access  Private
+
 const shareList = async (req, res) => {
     try {
         const list = await TodoList.findById(req.params.id);
@@ -158,9 +145,7 @@ const shareList = async (req, res) => {
     }
 };
 
-// @desc    Get Todo List by share token
-// @route   GET /api/lists/shared/:shareToken
-// @access  Public
+
 const getListByShareToken = async (req, res) => {
     try {
         const list = await TodoList.findOne({ shareToken: req.params.shareToken });

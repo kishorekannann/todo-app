@@ -8,13 +8,12 @@ const {
     deleteTodo,
 } = require("../controllers/todoController");
 
-// @desc    Create a new Todo Item
+
 router.post("/", protect, createTodo);
 
-// @desc    Get all Todo Items in a specific list
 router.get("/list/:listId", getTodosByList);
 
-// @desc    Update or delete a Todo Item
+
 router.put("/:id", protect, updateTodo);
 router.delete("/:id", protect, deleteTodo);
 
