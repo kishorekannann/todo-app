@@ -40,5 +40,5 @@ The frontend is built with React and uses a components/pages split structure:
 - src/App.jsx: Orchestrates root states, API requests, and view routing.
 
 Deployment Setup
-- Frontend: Deployed on Vercel (Free tier). Set VITE_API_URL environment variable to point to the production backend API URL.
-- Backend: Deployed on Render (Free tier Web Service). Set MONGO_URI, JWT_SECRET, and PORT environment variables.
+- Frontend: Deployed on Vercel
+- Backend: Deployed on Render 
